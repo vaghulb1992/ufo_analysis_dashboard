@@ -1,7 +1,5 @@
-# DATA-551
-# Project Milestone II and III
-# Vaghul Aditya Balaji
-# Student No. 10796456
+# UFO Analysis dashboard
+# Author: Vaghul Aditya Balaji
 
 from textblob import TextBlob
 import plotly.graph_objs as go
