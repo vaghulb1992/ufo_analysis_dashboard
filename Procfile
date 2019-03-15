@@ -1,1 +1,1 @@
-web: gunicorn ufo_analysis_dashboard:server
+web: gunicorn app:server
