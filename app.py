@@ -1,61 +1,22 @@
 # UFO Analysis dashboard
 # Author: Vaghul Aditya Balaji
 
-from textblob import TextBlob
 import plotly.graph_objs as go
 import pandas as pd
-
-#############################################################
-# DATA CLEANUP
-#############################################################
-
-df = pd.read_csv("https://raw.githubusercontent.com/vaghulb1992/ufo_analysis_dashboard/master/ufo_data.csv", low_memory = False)
-
-# first, let's drop some of the columns we won't be using in the visualizations
-df.drop(columns = ['duration (seconds)', 'duration (hours/min)', 'date posted', 'shape'], inplace = True)
-
-# since our analysis is only restricted to North America, let's filter our data first
-df = df[(df['country'] == 'us') | (df['country'] == 'ca')]
-
-# capitalizing the names of cities
-df.city = df.city.apply(str.capitalize)
-
-# let's drop all the rows where the state is NaN
-df.dropna(subset = ['state'], axis = 0, inplace = True)
-
-# let's convert the datetime column to the appropriate type
-df['datetime'] = pd.to_datetime(df['datetime'], errors = "coerce")
-
-# now, let's drop all the rows where the datetime field is NaT and sort data by datetime
-df.dropna(subset = ['datetime'], axis = 0, inplace = True)
-df.sort_values(by = 'datetime', inplace = True)
-
-# let's convert the latitude column to float64
-df.latitude = df.latitude.astype(float)
-
-# removing the space in the longitude column
-df.rename(columns = {'longitude ': 'longitude'}, inplace = True)
-
-# finally, we'd want to restrict our data to recent times (so we will stick to the last 60 years)
-df = df[df.datetime.dt.year >= 1960]
-
-# let's perform sentiment analysis on the comments field
-def get_sentiment_polarity(x):
-    return TextBlob(x).polarity
-
-df['sentiment-polarity'] = df.comments.astype(str).apply(get_sentiment_polarity)
-
-# let's drop the comments field as we don't need it anymore
-df.drop(columns = ['comments'], inplace = True)
-
-#############################################################
-# DATA VISUALIZATIONS
-#############################################################
-
+import emoji
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+
+#############################################################
+# Data Input
+#############################################################
+
+df = pd.read_csv("https://raw.githubusercontent.com/vaghulb1992/ufo_analysis_dashboard/master/ufo_input_data.csv")
+
+# converting the datatime column to pandas datetime
+df.datetime = pd.to_datetime(df.datetime)
 
 #############################
 # Data Preparation
@@ -87,7 +48,7 @@ app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
 app.title = "UFO Sightings Analysis"
 
 app.layout = html.Div([
-    html.H2("UFO Spotting Guide"),
+    html.H2(emoji.emojize("UFO Spotting Guide :alien:")),
 
     dcc.Tabs(id = "tabs", children = [
         dcc.Tab(label = "Where and when can I see it?", children = [
