@@ -158,7 +158,7 @@ app.layout = html.Div([
     html.Hr(),
 
     html.Div(["This dashboard was created by ", html.A("Vaghul Aditya Balaji", href = "https://www.linkedin.com/in/vaghulb1992/"),
-              ". Source: ", html.A("https://github.com/vaghulb1992/ufo_analysis_dashboard")],
+              ". Source: ", html.A("https://github.com/vaghulb1992/ufo_analysis_dashboard", href = "https://github.com/vaghulb1992/ufo_analysis_dashboard")],
              style = {'font-size': '9pt'})
 ], style={'width': '100%', 'display': 'inline-block'})
 
