@@ -47,6 +47,8 @@ app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
 
 app.title = "UFO Sightings Analysis"
 
+server = app.server
+
 app.layout = html.Div([
     html.H2(emoji.emojize("UFO Spotting Guide :alien:")),
 
