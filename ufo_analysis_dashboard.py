@@ -10,7 +10,7 @@ import emoji
 # DATA CLEANUP
 #############################################################
 
-df = pd.read_csv("ufo_data.csv", low_memory = False)
+df = pd.read_csv("https://raw.githubusercontent.com/vaghulb1992/ufo_analysis_dashboard/master/ufo_data.csv", low_memory = False)
 
 # first, let's drop some of the columns we won't be using in the visualizations
 df.drop(columns = ['duration (seconds)', 'duration (hours/min)', 'date posted', 'shape'], inplace = True)
