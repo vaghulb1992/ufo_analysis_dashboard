@@ -153,7 +153,13 @@ app.layout = html.Div([
                                          'borderBottom': '1px solid #d6d6d6',
                                          'backgroundColor': '#001580',
                                          'color': 'white'})
-    ], style = {'height': '44px', 'borderBottom': '1px solid #d6d6d6', 'fontWeight': 'bold'})
+    ], style = {'height': '44px', 'borderBottom': '1px solid #d6d6d6', 'fontWeight': 'bold'}),
+
+    html.Hr(),
+
+    html.Div(["This dashboard was created by ", html.A("Vaghul Aditya Balaji", href = "https://www.linkedin.com/in/vaghulb1992/"),
+              ". Source: ", html.A("https://github.com/vaghulb1992/ufo_analysis_dashboard")],
+             style = {'font-size': '9pt'})
 ], style={'width': '100%', 'display': 'inline-block'})
 
 #############################
