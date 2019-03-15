@@ -4,7 +4,6 @@
 from textblob import TextBlob
 import plotly.graph_objs as go
 import pandas as pd
-import emoji
 
 #############################################################
 # DATA CLEANUP
@@ -88,7 +87,7 @@ app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
 app.title = "UFO Sightings Analysis"
 
 app.layout = html.Div([
-    html.H2(emoji.emojize("UFO Spotting Guide :alien:")),
+    html.H2("UFO Spotting Guide"),
 
     dcc.Tabs(id = "tabs", children = [
         dcc.Tab(label = "Where and when can I see it?", children = [
