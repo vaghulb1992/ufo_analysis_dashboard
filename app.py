@@ -4,6 +4,8 @@
 import plotly.graph_objs as go
 import pandas as pd
 import emoji
+import os
+import flask
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -48,6 +50,10 @@ app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
 app.title = "UFO Sightings Analysis"
 
 server = app.server
+
+@server.route('/favicon.ico')
+def favicon():
+    return flask.send_from_directory(os.path.join(server.root_path, 'static'), 'favicon.ico')
 
 app.layout = html.Div([
     html.H2(emoji.emojize("UFO Spotting Guide :alien:")),
