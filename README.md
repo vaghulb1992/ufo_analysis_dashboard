@@ -1,4 +1,4 @@
-# UFO sightings dashboard
+# UFO Sightings Analysis
 A dashboard for analyzing UFO sightings in North America from 1960 - 2014. This was created in Python using Plotly and Dash.
 
 Dashboard - https://ufo-sightings-analysis.herokuapp.com/
